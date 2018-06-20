@@ -1,0 +1,85 @@
+/* pages/Collection/Collection.wxss */
+
+/*采用列式的样式*/
+page{
+  background-color:rgba(136,136,136,0.1);
+}
+.longlinetext{
+  width: 450rpx;
+  color: #999;
+  font-size: 30rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.collbookunit{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height:200rpx;
+}
+
+.collbooktitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  width:450rpx;
+}
+
+button::after{
+border: none;
+}
+
+.weui-grids {
+  border-top: 1rpx solid #d9d9d9;
+  border-left: 1rpx solid #d9d9d9;
+  overflow: hidden;
+}
+
+.weui-grid {
+  position: relative;
+  float: left;
+  padding: 20px 10px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  border-right: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+}
+
+.weui-grid_active {
+  background-color: #ececec;
+}
+
+.weui-grid__icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+}
+
+.weui-grid__label {
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.roll{
+  height: 600px；
+}
+
+.separate{
+  margin: 0 20rpx ;
+  height: 1px;
+  background: #888;
+  opacity: 0.3;
+}

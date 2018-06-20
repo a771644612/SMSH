@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#000",
+
+  "navigationBarTextStyle": "white",
+
+  "navigationBarTitleText": "用户",
+
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,7 @@
+user_guide/
+/.vs/
+.idea
+pub
+*.pdf
+junit.xml
+server/application/tests/build

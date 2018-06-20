@@ -1,0 +1,72 @@
+body {
+    background-image: url(../image/background_login.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.signin-form-container {
+    width: 360px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 40px;
+    background-color: white;
+    opacity: 0.88;
+    border-radius: 6px;
+    text-align: center;
+}
+ul.signin-message-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
+li.signin-message {
+    width: 274px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 16px 12px;
+    line-height: 1.5;
+    color: white;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 16px;
+    word-wrap: break-word;
+}
+li.signin-tip {
+    background-color: #0099ff;
+}
+li.signin-error {
+    
+    background-color: #aaaaaa;
+}
+.signin-form {
+    margin-bottom: 30px;
+}
+.input-container {
+    margin: 0;
+}
+#admin-name, #admin-password {
+    width: 280px;
+    height: 40px;
+    margin-bottom: 0;
+    padding-left: 10px;
+    border: 1px solid gray;
+    font-size: 20px;
+}
+#admin-name {
+    border-radius: 4px 4px 0 0;
+}
+#admin-password {
+    border-top: none;
+    border-radius: 0 0 4px 4px; 
+}
+#admin-signin {
+    width: 294px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 20px;
+    background-color: lightcoral;
+    color: white;
+    border: 1px solid;
+    border-radius: 4px;
+}

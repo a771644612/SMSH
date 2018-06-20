@@ -1,0 +1,45 @@
+
+<view>
+  <!--地址-->
+  <view style='padding:10rpx 20rpx;margin:20rpx 0 0 0;font-size:35rpx;color:purple'>收货地址</view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <view class='inputLine'>
+    <view style='width:180rpx;color:gray;'>省份</view>
+    <input placeholder="{{addressprovince}}" bindinput='addressprovinceinput' />
+  </view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <view class='inputLine'>
+    <view style='width:180rpx;color:gray;'>城市</view>
+    <input placeholder="{{addresscity}}" bindinput='addresscityinput' />
+  </view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <view class='inputLine'>
+    <view style='width:180rpx;color:gray;'>具体地址</view>
+    <input placeholder="{{address}}" bindinput='addressinput' />
+  </view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <!--收货人-->
+  <view style='padding:10rpx 20rpx;font-size:35rpx;color:purple'>收货信息</view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <view class='inputLine'>
+    <view style='width:180rpx;color:gray;'>收货人姓名</view>
+    <input style='' placeholder="{{userName}}" bindinput='nameinput' />
+  </view>
+  <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+  <view class='inputLine'>
+    <view style='width:180rpx;color:gray;'>手机号</view>
+    <input placeholder="{{tel}}" bindinput="telinput"  />
+  </view>
+</view>
+
+<view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+
+  <view class='inputLine' style='margin:20rpx 0;text-align:center;color:purple'>请如实填写信息，不然可能会收不到礼物哦@V@</view>
+
+<checkbox-group bindchange="bindAgreeChange">
+  <label class="weui-agree" for="weuiAgree"></label>
+</checkbox-group>
+
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="EditClick">确认保存</button>
+</view>

@@ -1,0 +1,152 @@
+<!--pages/Lottery/Lottery.wxml-->
+<view class='lottery' scroll-y="true" >
+  <view style='height:50rpx;'></view>
+
+<!--TODO 大转盘-->
+<view wx:if='{{lotteryType==2}}' style='width:580rpx;margin:30rpx'>
+  <view style='display:flex;margin:0 0 20rpx 0;'>
+    <view style="{{isSelected==1?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品1-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[1]?(lotteryinfo.rewards[pos[1]].category==0?lotteryinfo.rewards[pos[1]].cover:rewardsimg[lotteryinfo.rewards[pos[1]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==1?'red':'black'}}">{{lotteryinfo.rewards.length>pos[1]?(lotteryinfo.rewards[pos[1]].category==0?lotteryinfo.rewards[pos[1]].name:lotteryinfo.rewards[pos[1]].title):'谢谢惠顾'}}</text>
+    </view>
+   <view style="{{isSelected==2?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品2-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[2]?(lotteryinfo.rewards[pos[2]].category==0?lotteryinfo.rewards[pos[2]].cover:rewardsimg[lotteryinfo.rewards[pos[2]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==2?'red':'black'}}">{{lotteryinfo.rewards.length>pos[2]?(lotteryinfo.rewards[pos[2]].category==0?lotteryinfo.rewards[pos[2]].name:lotteryinfo.rewards[pos[2]].title):'谢谢惠顾'}}</text>
+    </view>
+    <view style="{{isSelected==3?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品3-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[3]?(lotteryinfo.rewards[pos[3]].category==0?lotteryinfo.rewards[pos[3]].cover:rewardsimg[lotteryinfo.rewards[pos[3]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==3?'red':'black'}}">{{lotteryinfo.rewards.length>pos[3]?(lotteryinfo.rewards[pos[3]].category==0?lotteryinfo.rewards[pos[3]].name:lotteryinfo.rewards[pos[3]].title):'谢谢惠顾'}}</text>
+    </view>
+  </view>
+  <view style='display:flex;margin:0 0 20rpx 0;'>
+    <view style="{{isSelected==4?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品4-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[4]?(lotteryinfo.rewards[pos[4]].category==0?lotteryinfo.rewards[pos[4]].cover:rewardsimg[lotteryinfo.rewards[pos[4]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==4?'red':'black'}}">{{lotteryinfo.rewards.length>pos[4]?(lotteryinfo.rewards[pos[4]].category==0?lotteryinfo.rewards[pos[4]].name:lotteryinfo.rewards[pos[4]].title):'谢谢惠顾'}}</text>
+    </view>
+    <view style="{{isSelected==5?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品5-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[5]?(lotteryinfo.rewards[pos[5]].category==0?lotteryinfo.rewards[pos[5]].cover:rewardsimg[lotteryinfo.rewards[pos[5]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==5?'red':'black'}}">{{lotteryinfo.rewards.length>pos[5]?(lotteryinfo.rewards[pos[5]].category==0?lotteryinfo.rewards[pos[5]].name:lotteryinfo.rewards[pos[5]].title):'谢谢惠顾'}}</text>
+    </view>
+    <view style="{{isSelected==6?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品6-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[6]?(lotteryinfo.rewards[pos[6]].category==0?lotteryinfo.rewards[pos[6]].cover:rewardsimg[lotteryinfo.rewards[pos[6]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==6?'red':'black'}}">{{lotteryinfo.rewards.length>pos[6]?(lotteryinfo.rewards[pos[6]].category==0?lotteryinfo.rewards[pos[6]].name:lotteryinfo.rewards[pos[6]].title):'谢谢惠顾'}}</text>
+    </view>
+  </view>
+  <view style='display:flex;'>
+    <view style="{{isSelected==7?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品7-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[7]?(lotteryinfo.rewards[pos[7]].category==0?lotteryinfo.rewards[pos[7]].cover:rewardsimg[lotteryinfo.rewards[pos[7]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==7?'red':'black'}}">{{lotteryinfo.rewards.length>pos[7]?(lotteryinfo.rewards[pos[7]].category==0?lotteryinfo.rewards[pos[7]].name:lotteryinfo.rewards[pos[7]].title):'谢谢惠顾'}}</text>
+    </view>
+    <view style="{{isSelected==8?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品8-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[8]?(lotteryinfo.rewards[pos[8]].category==0?lotteryinfo.rewards[pos[8]].cover:rewardsimg[lotteryinfo.rewards[pos[8]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==8?'red':'black'}}">{{lotteryinfo.rewards.length>pos[8]?(lotteryinfo.rewards[pos[8]].category==0?lotteryinfo.rewards[pos[8]].name:lotteryinfo.rewards[pos[8]].title):'谢谢惠顾'}}</text>
+    </view>
+   <view style="{{isSelected==9?'background-color:rgba(255,255,255,0.6);border:1px solid red;':''}}" class='lounit'>
+    <!--礼品9-->
+      <view></view>
+      <image src='{{lotteryinfo.rewards.length>pos[9]?(lotteryinfo.rewards[pos[9]].category==0?lotteryinfo.rewards[pos[9]].cover:rewardsimg[lotteryinfo.rewards[pos[9]].category]):rewardsimg[0]}}' style='width:80rpx;height:80rpx'></image>
+      <text class='longlinetext' style="-webkit-line-clamp: 1;color:{{isSelected==9?'red':'black'}}">{{lotteryinfo.rewards.length>pos[9]?(lotteryinfo.rewards[pos[9]].category==0?lotteryinfo.rewards[pos[9]].name:lotteryinfo.rewards[pos[9]].title):'谢谢惠顾'}}</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{lotteryType==2}}' style='background-color:white;width:650rpx;'>
+  <view class='graytext' style='color:purple;text-align:center;padding:20rpx 0 0 0;'>
+ 活动规则：
+  </view>
+  <view  class='graytext' style='text-align:center;' >
+  {{lotteryinfo.details}}
+  </view>
+  <view>
+    <view style='width:550rpx;'>
+      <view class='graytext' style='padding:20rpx 0  0 20rpx;color:purple'>活动开始时间：<text style='color:gray'>{{stime}}</text></view>
+      <view class='graytext' style='padding:10rpx 0 10rpx 20rpx;color:purple'>活动截止时间：<text style='color:gray'>{{etime}}</text></view>
+    </view>
+    <view style='padding:0 0 1rpx 0'>
+  <button class='lobutton' style="background-color:{{lotteryinfo.left==0||isRoll||!pre?'rgba(0,0,0,0.2)':'red'}}" bindtap='lobur'>{{pre?(lotteryinfo.left<=0&&lotteryinfo.rewards.length >0&&!isRoll?'已达抽奖上限':'积分抽奖 '+lotteryinfo.cost+"分/次"):"活动未在进行中"}}</button>
+  </view>
+  </view>
+
+
+</view>
+<!--微博抽奖和砍价-->
+<view wx:if='{{lotteryType==1||lotteryType==3}}' style='background-color:white;width:650rpx;'>
+  <navigator url="/pages/Book/Book?bookid={{lotteryinfo.book_info.id}}{{lotteryinfo.book_id}}" class='collbookunit'>
+    <view style='margin:0 30rpx;'><image src="{{lotteryinfo.cover}}{{lotteryinfo.book_info.cover}}" style='width:200rpx;height:200rpx;'></image></view>
+    <view class='collbooktitle'>
+    <view  class='longlinetext' style='font-size:35rpx;color:purple;-webkit-line-clamp: 1;display:flex;width:480rpx;'>
+    {{lotteryinfo.book_title}}{{lotteryinfo.book_info.name}}
+    </view>
+     <view  class='longlinetext' style='font-size:30rpx;color:purple;opacity: 0.5;-webkit-line-clamp: 1;'>{{lotteryinfo.brief}}{{lotteryinfo.book_info.brief}}</view>
+    <view class='longlinetext'>剩余数量：<text>{{lotteryinfo.books_left}}{{lotteryinfo.rewards_info.booknum}}</text></view>
+    </view>
+  </navigator>
+
+    <!--砍价优惠的价格-->
+    <view wx:if='{{lotteryType==3}}'>
+      <view class="separate" style='margin:0 0 0 40rpx;opacity: 0.2;'></view>
+      <view style='padding:20rpx 0;align-items: center;display: flex;flex-direction: column;justify-content: space-around;'>
+        <view style='font-size:30rpx;color:purple'>当前价格</view>
+        <view style='font-size:50rpx;color:red'>{{lotteryinfo.price}}积分</view>
+        <view style='font-size:30rpx;color:black'>已有<text style='color:orange'>{{lotteryinfo.users_count}}</text>人砍价，还有<text style='color:orange'>{{lotteryinfo.times_left}}</text>次砍价机会</view>
+      </view>
+    </view>
+
+    <view>
+    <view class="separate" style='margin:0 0 0 40rpx;opacity: 0.2;'></view>
+  <view class='graytext' style='color:purple'>
+ 活动规则：
+  </view>
+  <view  class='graytext' >
+  {{lotteryinfo.introduction}}<!--两种规则-->
+  </view>
+  <view class="separate" style='margin:0 0 0 40rpx;opacity: 0.2;'></view>
+
+  <!--微博抽奖信息-->
+  <view wx:if='{{lotteryType==1||lotteryType==3}}'>
+    <view style='width:550rpx;'>
+      <view class='graytext' style='padding:20rpx 0  0 20rpx;color:purple'>活动开始时间：<text style='color:gray'>{{stime}}</text></view>
+      <view class='graytext' style='padding:10rpx 0 10rpx 20rpx;color:purple'>活动截止时间：<text style='color:gray'>{{etime}}</text></view>
+    </view>
+    <button wx:if="{{lotteryType==1}}" class='lobutton' style="background-color:{{lotteryinfo.state_detail==1&&lotteryinfo.user_state==0&&pre?'red':'rgba(0,0,0,0.2)'}}"  bindtap='lobuw'>{{lotteryinfo.user_state==1||!pre?'已参与':(lotteryinfo.state_detail==1?'参与抽奖 '+lotteryinfo.credits_need+'分/次':'活动未在进行中')}}</button>
+  </view>
+
+  <!--砍价优惠信息-->
+  <view  wx:if='{{lotteryType==3}}'>
+    <button class='lobutton' style="background-color:{{lotteryinfo.bargained||!pre?'rgba(0,0,0,0.2)':'rgba(255,201,14,0.8)'}}"  bindtap='lobuc'>{{pre?(lotteryinfo.bargained?'已砍价':'参与砍价'):'活动未在进行中'}}</button>
+    <button class='lobutton' style="background-color:{{lotteryinfo.books_left<=0||!pre?'rgba(0,0,0,0.2)':'red'}}" bindtap='lobub'>{{pre?(lotteryinfo.books_left<=0?'已售空':'立即换购'):'活动未在进行中'}}</button>
+  </view>
+
+
+  </view>
+<view class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+</view>
+
+<!--分享按钮-->
+<button open-type='share' style='padding:50rpx 0;width:400rpx;display:flex;background-color:rgba(255,255,255,0)'>
+
+<view style=';width:110rpx;height:110rpx;border-radius: 50%;background-color:rgba(255,255,255,0.5);dislay:flex;flex-direction: column;justify-content: space-around;'>
+<image src="/images/shuimu.jpg" style='width:100rpx;height:100rpx;border-radius: 50%;'></image>
+</view>
+
+<view style='color:white;padding:0 30rpx;'>转发分享</view>
+
+</button> 
+
+</view>

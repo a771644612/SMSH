@@ -1,0 +1,68 @@
+<!--pages/User/User.wxml-->
+
+
+<!-- 用户登录测试 -->
+<button open-type= "getUserInfo" class='Bkd_hd' style='width:750rpx;align-item:center' wx:if="{{!logged}}" bindgetuserinfo='loginlog'>
+  
+  
+    <view style='height:30rpx'>
+      
+    </view>
+
+    <view class="Bkd_hd_img" style='height:160rpx; width:160rpx; background-color: rgba(255,255,255,0.8);'>
+        <image class="Bkd_hd_img" src="/images/user-unlogin_2.png" />
+    </view>
+
+    <view>
+      <text style='font-size:20px;color:rgba(136,124,151,1)'>点击登录</text>
+    </view>
+</button>
+
+
+
+
+<view wx:if="{{logged}}">
+
+  <view class='Bkd_hd' style='background-image: url(https://pk11ehy7.qcloud.la/static/image/background.jpg); background-color:purple '>
+  <!--<view class='Bkd_hd' style='background-image: url(/images/back.jpg); background-color:purple '>-->
+    <view style='height:30rpx'>
+      
+    </view>
+    <view class="Bkd_hd_img" style='height:160rpx; width:160rpx; background-color: rgba(255,255,255,0.8);'>
+        <image class="Bkd_hd_img" src="{{userinfo.avatarUrl}}"/>
+    </view>
+    <view>
+      <text style='font-size:30px;color:white'>{{userinfo.nickName}}</text>
+    </view>
+
+    
+    <view style='display:flex;width:750rpx;align-items: left'>
+      <view style='display:flex; width:250rpx;flex-direction: column;padding:0 30rpx;'>
+        <text style='color:white;font-size:20px'>{{credit}}</text>
+        <text style='color:white;font-size:13px'>剩余积分</text>
+      </view>
+      <view style='width:220rpx;'></view>
+      <view >
+      <button class='Signin' bindtap='OnClickListener'>{{SigninText}}</button>
+      </view>
+    </view>
+  </view>
+
+  <navigator url="/pages/HistoryOrder/HistoryOrder" class="weui-cell weui-cell_access" style='{{userinfo.pricenum>0?"background-color:rgb(244,185,20);color:white":""}}' hover-class="weui-cell_active" >
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>{{userinfo.pricenum>0?'您有'+userinfo.pricenum+'条中奖记录待查看':'历史记录'}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="/pages/Address/Address" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+      </view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>收货地址</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <view  class="weui-cell weui-cell_access"></view>
+    <button class="weui-btn" type="warn" bindtap='logout'>退出登录</button>
+
+</view>

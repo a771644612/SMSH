@@ -1,0 +1,40 @@
+<!--pages/Collection/Collection.wxml-->
+
+  <!--书本单元-->
+<scroll-view style="height: 100vh; width: 750rpx;" scroll-y="true" bindscrolltolower="LoadMore">
+<view style='background-color:white'>
+  <view style='padding:15rpx 40rpx;font-size:30rpx;color:purple;display:flex;' bindtap='fresh'>
+    <view style='width:540rpx'>收藏列表>>></view><view style='color:gray;'> 点击刷新</view>
+  </view>
+</view>
+  <view wx:if="{{leng==0&&!isloading&&!nomore}}" style="height:70rpx; display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;color:gray;font-size:30rpx;">
+   <text >收藏空空如也@_@</text>
+   </view>
+
+  <view wx:for='{{collbook}}' wx:for-index="id" wx:for-item='book' style='background-color:white'>
+    <view class="separate" style='margin:0 0 0 265rpx;opacity: 0.2;'></view>
+    <navigator  url="/pages/Book/Book?bookid={{book.id}}" class='collbookunit'>
+      <view style='margin:0 30rpx;'>
+        <image src="{{book.cover}}" style='width:200rpx;height:200rpx;'></image>
+      </view>
+      <view class='collbooktitle'>
+        <view class='longlinetext' style='font-size:30rpx;color:purple;-webkit-line-clamp: 1;display:flex;width:480rpx;'>
+          {{book.name}}
+        </view>
+        <view class='longlinetext' style='font-size:30rpx;color:purple;opacity: 0.5;-webkit-line-clamp: 1;'>{{book.author}}</view>
+        <view class='longlinetext'>{{book.brief}}</view>
+        <view class='longlinetext' style='text-align:right;font-size:25rpx'>
+          <text>详情>>></text>
+        </view>
+      </view>
+    </navigator>
+    </view>
+   <view wx:if="{{isloading||nomore}}" class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+   <view style="height:70rpx; display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;color:gray;font-size:30rpx;">
+   <text wx:if="{{isloading&&!nomore}}" >@Loading...</text>
+   <text wx:if="{{nomore&&!isloading}}" >已经到底了 @.@
+    </text>
+    </view>
+</scroll-view>
+
+

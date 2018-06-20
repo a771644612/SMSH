@@ -1,0 +1,117 @@
+/* pages/Discovery/Discovery.wxss */
+page{
+  background-color:rgba(136,136,136,0.1);
+}
+
+.longlinetext{
+    color: #999;
+  font-size: 30rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.longlinetext{
+  width: 450rpx;
+  color: #999;
+  font-size: 30rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.showbookunit{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height:200rpx;
+  background-color:white;
+}
+
+.showbooktitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  width:450rpx;
+}
+
+
+.muticolumn{
+  height: 100rpx;
+  border-bottom: 1px solid #d5d5d5;
+  display: flex;
+  flex-direction: row;
+}
+
+.liststatus{
+  width:180rpx;
+  text-align: center;
+  border-radius: 5px;
+  color:gray;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.muticolumn_unit{
+  padding:20rpx; 
+  width: 375rpx;
+  text-align: center;
+  font-size:35rpx;
+}
+
+button::after{
+border: none;
+}
+
+.placeholder{
+    margin: 5px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #000;
+}
+
+.dscv_lab_title{
+    margin: 10rpx;
+    color:rgba(104, 104, 104, 1.0);
+}
+.dscv_num1{
+    width: 100rpx;
+    text-align: center;
+    background-color:rgba(255, 215, 107, 1.0);
+    color:white;
+}
+.dscv_num1_nv{
+    padding: 10px;
+    height: 300rpx;
+    display: flex;
+    vertical-align: middle;
+    border-color:rgba(104, 104, 104, 1.0);
+}
+.dscv_num1_title{
+    padding: 10rpx;
+    text-align: center;
+    height: 60rpx;
+}
+
+.dscv_list{
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  height:60rpx;
+  width:400rpx;
+  padding:0 10px;
+}
+
+.separate{
+  height: 1px;
+  background: #888;
+}

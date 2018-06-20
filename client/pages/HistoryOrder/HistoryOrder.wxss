@@ -1,0 +1,50 @@
+page{
+  background-color:rgba(136,136,136,0.1);
+}
+
+
+.longlinetext{
+  width: 450rpx;
+  color: #999;
+  font-size: 30rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.collbookunit{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height:200rpx;
+}
+
+.collbooktitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  width:450rpx;
+}
+
+.graytext{
+   padding:10rpx 20rpx;
+   margin: 0 25rpx;
+   font-size:30rpx;
+   color:gray;
+   width:750rpx;
+}
+
+button::after{
+border: none;
+}
+
+.separate{
+  margin: 0 20rpx ;
+  height: 1px;
+  background: #888;
+  opacity: 0.3;
+}

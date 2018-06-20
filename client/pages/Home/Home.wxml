@@ -1,0 +1,163 @@
+<!--pages/Home/Home.wxml-->
+
+<!--navigator url="/pages/Order/Order">测试order</navigator-->
+
+<scroll-view style="height: 100vh; width: 750rpx;" scroll-y="true" bindscrolltolower="LoadMore">
+<!--轮播图-->
+<view  style='background-color:white'>
+<view style='height:500rpx'>
+
+
+  <swiper autoplay="auto" interval="3000" indicator-dots='true' indicator-color='gray' indicator-active-color='white' style='height:500rpx;background-color:rgba(136,136,136,0.1)'>
+    <swiper-item wx:if="{{imleng==0}}">
+      <navigator>
+      <image mode='aspectFill' class='Images' src='{{image}}'>
+      </image>
+      </navigator>
+    </swiper-item>
+  <view wx:for='{{imagenum}}'>
+    <swiper-item>
+      <navigator url='/pages/Lottery/Lottery?type={{item.type}}&id={{item.activity_id}}'>
+      <image mode='aspectFill' class='Images' src='{{item.image.url}}'>
+      </image>
+      </navigator>
+    </swiper-item>
+  </view>
+  </swiper>
+</view>
+
+<!--活动推荐-->
+
+
+<view>
+<view style='margin:15rpx 40rpx;font-size:30rpx;color:purple;display:flex;' bindtap='fresh'>
+<view style='width:540rpx'>活动进行中>>></view><view style='color:gray;'> 点击刷新</view>
+</view>
+
+  <view wx:if="{{length==0}}" style="height:70rpx; display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;color:gray;font-size:30rpx;background-color:rgba(136,136,136,0.1)">
+   <text>当前没有活动正在进行@_@</text>
+  </view>
+
+<view >
+<view wx:for="{{goact}}">
+
+<view class="separate" style='margin:0 0 0 20rpx;opacity: 0.2;'></view>
+<navigator wx:if="{{item.state==0||item.state==1}}" url='/pages/Lottery/Lottery?type={{item.type}}&id={{item.id}}' class='newactunit'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="{{item.type==2?'/images/lunpan.png':(item.cover?item.cover:'/images/default_book.png')}}" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:purple;text-align:center'>{{item.type==1?'好书送不停':(item.type==3?'火热砍价中':'幸运大转盘')}}</view>
+      <view  style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>{{item.type==3?item.bargain_title:item.title}}</view>
+      <view class='longlinetext' >{{item.type==3?'《'+item.book_title+'》':item.brief}}</view>
+    </view>
+  </navigator>
+
+<navigator wx:if="{{!(item.state==0||item.state==1)}}" class='newactunit' style='opacity: 0.8;background-color:rgba(136,136,136,0.1);'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="/images/default_book.png" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:gray;text-align:center'>活动已失效</view>
+      <!--view  wx:if="{{item.type==1||item.type==3}}" style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>优惠图书</view>
+      <view class='longlinetext' >{{item.type==2?item.list:'《'+item.book_title+'》'}}</view-->
+    </view>
+  </navigator>
+  
+</view>
+
+
+<!--view class="separate" style='margin:0 0 0 20rpx;opacity: 0.2;'></view>
+  <navigator url="/pages/Lottery/Lottery?type=2" class='newactunit'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="/images/lunpan.png" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:purple;text-align:center'>幸运大转盘：</view>
+      <view   style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>奖品列表</view>
+      <view class='longlinetext' >宝宝金水*10、霸王防脱发*20、C++大学教程*10</view>
+    </view>
+  </navigator>
+
+<view class="separate" style='margin:0 0 0 20rpx;opacity: 0.2;'></view>
+  <navigator  url="/pages/Lottery/Lottery?type=1" class='newactunit'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="{{image==''?'/images/default_book.png':image}}" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:purple;text-align:center'>好书送不停：</view>
+      <view   style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>本期图书</view>
+      <view class='longlinetext' >《Java从入门到精通》</view>
+    </view>
+  </navigator>
+
+
+  <view class="separate" style='margin:0 0 0 20rpx;opacity: 0.2;'></view>
+  <navigator  url="/pages/Lottery/Lottery?type=3" class='newactunit'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="{{image==''?'/images/default_book.png':image}}" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:purple;text-align:center'>火热砍价中：</view>
+      <view   style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>优惠图书</view>
+      <view class='longlinetext' >《深度学习》</view>
+    </view>
+  </navigator-->
+
+</view>
+
+<view class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+<view class="separate" style='margin: 0rpx;height:20rpx;opacity: 0.1;'></view>
+
+<!--往期活动-->
+
+<view>
+
+  <view style='margin:15rpx 0rpx;font-size:30rpx;color:purple;text-align:center;width:750rpx' bindtap='showList'>
+往期活动<text style='padding:0 10rpx;'>{{showFormList?'▲':'▼'}}</text>
+</view>
+<view class="separate" style='margin:0 0 0 0rpx;opacity: 0.2;'></view>
+
+<view wx:if="{{showFormList}}">
+<!--往期活动内容，下拉加载-->
+<view wx:for='{{formact}}'>
+
+<navigator wx:if="{{item.state==0||item.state==1}}"  class='newactunit' style='background-color:#fafafa;'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="{{item.type==2?'/images/lunpan.png':(item.cover?item.cover:'/images/default_book.png')}}" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:purple;text-align:center'>{{item.type==1?'好书送不停':(item.type==3?'火热砍价中':'幸运大转盘')}}</view>
+      <view  style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>{{item.type==3?item.bargain_title:item.title}}</view>
+      <view class='longlinetext' >{{item.type==3?'《'+item.book_title+'》':item.brief}}</view>
+    </view>
+  </navigator>
+
+<navigator wx:if="{{!(item.state==0||item.state==1)}}" class='newactunit' style='opacity: 0.8;background-color:rgba(136,136,136,0.1);'>
+    <view style='margin:0 10rpx;width:160rpx;height:160rpx;'>
+    <image src="/images/default_book.png" style='width:160rpx;height:160rpx;'></image>
+    </view>
+    <view style='margin:0 30rpx'>
+      <view   style='width:500rpx;padding:0 0 5rpx 0;font-size:35rpx;color:gray;text-align:center'>活动已失效</view>
+      <!--view  wx:if="{{item.type==1||item.type==3}}" style='padding:0 0 5rpx 0rpx;font-size:30rpx;color:purple;opacity:0.6;'>优惠图书</view>
+      <view class='longlinetext' >{{item.type==2?item.list:'《'+item.book_title+'》'}}</view-->
+    </view>
+  </navigator>
+  <view class="separate" style='margin:0 0 0 20rpx;opacity: 0.2;'></view>
+
+</view>
+
+  <view wx:if="{{isloading||nomore}}" class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+  <view style="height:70rpx; display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;color:gray;font-size:30rpx;background-color:rgba(136,136,136,0.1)">
+   <text wx:if="{{isloading&&!nomore}}" >@Loading...</text>
+   <text wx:if="{{nomore&&!isloading}}" >已经到底了 @.@
+    </text>
+  </view>
+
+</view>
+
+</view>
+
+</view>
+</view>
+</scroll-view>

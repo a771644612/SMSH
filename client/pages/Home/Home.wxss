@@ -1,0 +1,175 @@
+/* pages/Home/Home.wxss */
+page{
+  background-color:rgba(136,136,136,0.1);
+}
+
+.longlinetext{
+  color: #999;
+  font-size: 30rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.newactunit{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height:180rpx;
+  width:750rpx;
+}
+
+
+.newbookunit{
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height:200rpx;
+}
+
+.newbooktitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width:450rpx;
+}
+
+.act_org{
+  height: 150rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.act_org_img{
+  border-radius:50%;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.act_org_txt{
+  width: 120rpx;
+  height: 50rpx;
+  text-align: center;
+  vertical-align: text-top;
+  color: #817491;
+}
+
+.Images {
+  width:750rpx;
+}
+
+
+.searchbar-result {
+
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.searchbar-result:before {
+  display: none;
+}
+
+.weui-cell {
+  padding: 12px 15px 12px 35px;
+}
+
+/* pages/User/User.wxss */
+
+.weui-panel {
+  background-color: #fff;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.weui-panel:first-child {
+  margin-top: 0;
+}
+
+.weui-panel:before {
+  top: 0;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.weui-panel:after, .weui-panel:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  color: #e5e5e5;
+}
+
+.weui-panel:after {
+  bottom: 0;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.weui-panel__hd {
+  padding: 14px 15px 10px;
+  color: #999;
+  font-size: 13px;
+  position: relative;
+}
+
+.weui-panel__hd:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
+  left: 15px;
+}
+
+.button-sp-area {
+  margin: 0 auto;
+  padding-top: 15px;
+  width: 60%;
+}
+
+.mini-btn {
+  margin-right: 5px;
+}
+
+.weui-btn {
+  margin-top: 45px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.weui-btn:first-child {
+  margin-top: 0;
+}
+
+.weui-btn-area {
+  margin: 1.17647059em 15px 0.3em;
+}
+
+.activity {
+  font-weight: bold;
+  font-size: 30px;
+  height: 50px;
+  /*弹性盒子布局。*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: gray;
+}
+
+.separate{
+  margin: 0 20rpx ;
+  height: 1px;
+  background: #888;
+  opacity: 0.3;
+}

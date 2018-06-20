@@ -1,0 +1,175 @@
+<!--pages/Order/Order.wxml-->
+
+<view class='showAddress'>
+  <view style='display:flex'>
+    <view style='color:purple;width:500rpx'>{{showAddress.nickName}}</view>
+    <navigator url="/pages/Address/Address" style='padding:10rpx 20rpx;font-size:30rpx;background-color:#eeeeee;color:#666666;border-radius: 3px;' >编辑地址</navigator>
+  </view>
+  <view style='color:purple;font-size:30rpx'>手机号：<text style='color:black'>{{showAddress.tel}}</text></view>
+  <view class="longlinetext" style='width:650rpx;color:purple;margin:10rpx 0 20rpx 0;'>
+  地址：<text style='color:black'>{{historytype==0?inAddress:showItem.address
+}}</text>
+  </view>
+</view>
+
+<view style='height:260rpx;'></view>
+
+
+
+<!--书本购买-->
+<view style=' display: flex;flex-direction: column; align-items: center;'>
+
+  <view wx:if="{{historytype==0}}" class='showOrder'>
+    <view style='margin:10rpx 30rpx;font-size:30rpx;color:purple'>购买商品
+    </view>
+
+    <view style='padding:25rpx 65rpx;margin:0 30rpx;border-bottom: 1px solid rgba(136,136,136,0.2);'>
+      <image src="{{showItem.cover}}" style='width:400rpx;height:400rpx;'></image>
+    </view>
+
+    <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;color:purple;'>
+      {{showItem.name}}
+    </view>
+     <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;color:purple;border-bottom: 1px solid rgba(136,136,136,0.2);opacity: 0.5;'>
+      {{showItem.author}}
+    </view>
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray'>
+      积分价格：<text style='color:red'>{{showItem.price}}</text>
+    </view>
+
+     <button  style="background-color:red;margin: 50rpx;color:white;font-size:40rpx;border-radius: 15rpx;"  bindtap='tobuy'>确认购买</button>
+    <view style='height:50rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+  </view>
+
+<!--书本历史-->
+  <view wx:if="{{historytype==1}}" class='showOrder'>
+    <view style='margin:10rpx 30rpx;font-size:30rpx;color:purple'>购买商品
+    </view>
+
+    <view style='padding:25rpx 65rpx;margin:0 30rpx;border-bottom: 1px solid rgba(136,136,136,0.2);'>
+      <image src="{{showItem.book_info.cover}}{{showItem.reward_info.book_info.cover}}" style='width:400rpx;height:400rpx;'></image>
+    </view>
+
+    <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;color:purple;'>
+      {{showItem.book_info.name}}{{showItem.reward_info.book_info.name}}
+    </view>
+     <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;border-bottom: 1px solid rgba(136,136,136,0.2);color:purple;opacity: 0.5;'>
+      {{showItem.book_info.author}}{{showItem.reward_info.book.book_info.author}}
+    </view>
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray'>
+      状态：<text style='color:purple'>{{showItem.state==0?'未发货':(showItem.state==1?'已发货':(showItem.state==2?'待评论':'已评论'))}}</text>
+    </view>
+     <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray;'>
+      运单号：<text style='color:red'>{{showItem.tracking_number==null?'还没发货哟@_@':showItem.tracking_number}}</text>
+    </view>
+
+    <view style='height:30rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+
+<button wx:if="{{showItem.state==1}}" style="background-color:red;margin: 50rpx;color:white;font-size:40rpx;border-radius: 15rpx;"  bindtap='toval'>确认收货</button>
+
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:purple'>
+      评论
+    </view>
+<view  wx:if="{{!(showItem.state==2)}}">
+  <view style='margin:70rpx 0;text-align:center;width:650rpx;color:gray;font-size:30rpx;'>
+    <view>{{showItem.state==3?'已经评论过了@m@':'收到货之后才能评论@_@'}}</view>
+  </view>
+</view>
+
+<view  wx:if="{{showItem.state==2}}">
+    <view style='background-color:white;margin:10rpx 30rpx;border: 1px solid rgba(136,136,136,0.2);'>
+      <textarea style='font-size:30rpx;padding:10rpx' bindblur="bindTextAreaBlur"  placeholder="添加评论" />
+    </view>
+    <view style='display:flex'>
+    <view style='width:420rpx'></view>
+    <view style='width:200rpx;text-align:center;padding:10rpx 0;font-size:30rpx;background-color:#eeeeee;color:#666666;border-radius: 3px;margin:0 0 30rpx 0' bindtap='inputC'>发表评论</view>
+    </view>
+
+</view>
+
+    <view style='height:50rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+  </view>
+
+<!--活动书本历史-->
+  <view wx:if="{{historytype==3}}" class='showOrder'>
+    <view style='margin:10rpx 30rpx;font-size:30rpx;color:purple'>购买商品
+    </view>
+
+    <view style='padding:25rpx 65rpx;margin:0 30rpx;border-bottom: 1px solid rgba(136,136,136,0.2);'>
+      <image src="{{showItem.reward_info.book_info.cover}}" style='width:400rpx;height:400rpx;'></image>
+    </view>
+
+    <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;color:purple;'>
+      {{showItem.reward_info.book_info.name}}
+    </view>
+     <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;border-bottom: 1px solid rgba(136,136,136,0.2);color:purple;opacity: 0.5;'>
+      {{showItem.reward_info.book.book_info.author}}
+    </view>
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray'>
+      状态：<text style='color:purple'>{{showItem.state==0?'未发货':(showItem.state==1?'已发货':(showItem.state==2?'待评论':'已评论'))}}</text>
+    </view>
+     <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray;'>
+      运单号：<text style='color:red'>{{showItem.tracking_number==null?'还没发货哟@_@':showItem.tracking_number}}</text>
+    </view>
+
+    <view style='height:30rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+
+<button wx:if="{{showItem.state==1}}" style="background-color:red;margin: 50rpx;color:white;font-size:40rpx;border-radius: 15rpx;"  bindtap='toval'>确认收货</button>
+
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:purple'>
+      评论
+    </view>
+<view  wx:if="{{!(showItem.state==2)}}">
+  <view style='margin:70rpx 0;text-align:center;width:650rpx;color:gray;font-size:30rpx;'>
+    <view>{{showItem.state==3?'已经评论过了@m@':'收到货之后才能评论@_@'}}</view>
+  </view>
+</view>
+
+<view  wx:if="{{showItem.state==2}}">
+    <view style='background-color:white;margin:10rpx 30rpx;border: 1px solid rgba(136,136,136,0.2);'>
+      <textarea style='font-size:30rpx;padding:10rpx' bindblur="bindTextAreaBlur"  placeholder="添加评论" />
+    </view>
+    <view style='display:flex'>
+    <view style='width:420rpx'></view>
+    <view style='width:200rpx;text-align:center;padding:10rpx 0;font-size:30rpx;background-color:#eeeeee;color:#666666;border-radius: 3px;margin:0 0 30rpx 0' bindtap='inputCL'>发表评论</view>
+    </view>
+
+</view>
+
+    <view style='height:50rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+  </view>
+
+
+<!--文本历史-->
+<view wx:if="{{historytype==2}}" class='showOrder'>
+  <!--view style='margin:10rpx 30rpx;font-size:30rpx;color:purple'>奖品信息
+    </view-->
+
+    <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;color:purple;'>
+      {{showItem.reward_info.rewards_title}}
+    </view>
+     <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;border-bottom: 1px solid rgba(136,136,136,0.2);color:purple;opacity: 0.5;'>
+      {{showItem.reward_info.rewards_back}}
+    </view>
+
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray;'>
+      奖品类型：<text style='color:purple;'>活动礼物</text>
+    </view>
+    <view style='margin:10rpx 30rpx;padding:0 0 10rpx 0;font-size:35rpx;border-bottom: 1px solid rgba(136,136,136,0.2);color:gray;'>
+      领取方式：<text style='color:purple;'>以实物为准</text>
+    </view>
+
+    <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray'>
+      状态：<text style='color:purple'>{{showItem.state==0?'未发货':'已发货'}}</text>
+    </view>
+     <view style='margin:10rpx 30rpx;font-size:35rpx;color:gray;'>
+      运单号：<text style='color:red'>{{showItem.tracking_number==null?'还没发货哟@_@':showItem.tracking_number}}</text>
+    </view>
+    <view style='height:50rpx;background-color:rgba(136,136,136,0.1);border-top: 1px solid rgba(136,136,136,0.2);'></view>
+</view>
+
+</view>
+
+
+
+

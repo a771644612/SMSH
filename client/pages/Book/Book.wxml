@@ -1,0 +1,136 @@
+<!--轮播-->
+<scroll-view style="height: 100vh; width: 750rpx;" scroll-y="true" bindscrolltolower="LoadMore">
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper-item>
+    <image src="{{bookinfo.cover}}" bindtap="previewImage"></image>
+  </swiper-item>
+  <block wx:for="{{bookinfo.images}}">
+    <swiper-item>
+      <image src="{{item.url}}" data-src="{{item.url}}" bindtap="previewImage"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+
+  <!--介绍-->
+  <view class="detail" style='dispaly:flex;flex-direction: row;'>
+    <view>
+      <view class="newtitle" style='width:600rpx'>{{bookinfo.name}}</view>
+      <view class="newtitle" style='font-size: 30rpx;padding:10rpx;color:gray'>{{bookinfo.author}}</view>
+    </view>
+    <view style='margin:10rpx;width:1px;height:30px; background-color: gray; opacity: 0.3;'></view>
+    <view wx:if="{{bookinfo.favorite==1}}" class="addcoll" bindtap='uncollection'>
+      <image src="/images/Collection2.png" style='width:60rpx;height:60rpx'></image>
+      <view style='font-size:25rpx'>已收藏</view>
+    </view>
+    <view wx:if="{{bookinfo.favorite==0}}" class="addcoll" bindtap='addcollection'>
+      <image src="/images/Collection1.png" style='width:60rpx;height:60rpx'></image>
+      <view style='font-size:25rpx'>收藏</view>
+    </view>
+  </view>
+
+  <view class='detail' style='display:flex;flex-direction: row;'>
+    <view class="price">
+      <text style='margin:0 10rpx;'> 积分 </text>
+      <text style='font-size:40rpx;margin:0;width:450rpx'>{{bookinfo.price}}</text>
+    </view>
+  </view>
+
+  <view style='height:10rpx;'></view>
+  <view class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+  <view class="separate" style='margin: 0rpx;height:20rpx;opacity: 0.1;'></view>
+
+  <view class='muticolumn'>
+    <view bindtap='toItemStatus' class='muticolumn_unit' style='{{inComment ? innull : borderStatus}}'>商品详情</view>
+    <view style='margin:10rpx 0rpx;width:1px;height:70rpx; background-color: gray; opacity: 0.3;'></view>
+    <view bindtap='toCommentStatus' class='muticolumn_unit' style='{{inComment ? borderStatus : innull}}'>用户评价</view>
+  </view>
+
+  <!--商品详情-->
+  <view wx:if="{{!inComment}}" style='text-align:center;'>
+    <view wx:for="{{bookdetail}}">
+      <view  wx:if="{{!item.isText}}">
+        <image src="{{item.url}}" mode='aspectFit' binderror="binderrorimg" data-errorimg="{{index}}"/>
+      </view>
+      <view wx:if="{{item.isText}}" style='margin:0 50rpx'>
+        <text>{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--用户评价-->
+  <view wx:if="{{inComment}}">
+
+    <!--排序按钮-->
+    <view style='display:flex'>
+      <view style='width:500rpx;display:flex;margin:20rpx;font-size:30rpx;  justify-content: space-around;'>
+        <image src='/images/list2.png' style='width:40rpx;height:40rpx;'></image>
+        <view class='liststatus' bindtap='list1' style="{{liststatus==0? listselected : ''}}">时间排序</view>
+        <view class='liststatus' bindtap='list2' style="{{liststatus==1? listselected : ''}}">点赞排序</view>
+      </view>
+      <view style='width:210rpx;text-align:right;margin:20rpx;font-size:30rpx;opacity: 0.8'>全部评论 </view>
+    </view>
+
+    <view wx:for='{{showcomment}}' wx:for-index="id" wx:for-item='comment'>
+      <!--在这个view这里开始为单位用户的评论-->
+      <view class="separate" style='margin:0 0 0 115rpx;opacity: 0.1;'></view>
+      <view class="detail" style='dispaly:flex;flex-direction: row;'>
+        <!--用户信息-->
+        <view class="comment_list">
+          <image  src="{{comment.userinfo==null?'/images/user-unlogin_2.png':comment.userinfo.avatarUrl}}" style='border-radius:50%;height:60rpx;width:60rpx;'></image>
+        </view>
+        <view style='display:flex;flex-direction:column;'>
+          <view style=' display:flex;flex-direction:row;'>
+            <view class='comment_list' style='width:420rpx;'>{{comment.userinfo==null?'匿名用户':comment.userinfo.nickName}}</view>
+            <view class='comment_list' style='width:160rpx;opacity: 0.5;'>{{comment.time}}</view>
+
+          </view>
+          <!--评论内容-->
+          <view class='comment_list' style='opacity: 0.7;text-align:left'>
+            <text>{{comment.contents}}</text>
+          </view>
+          <view style='height:10rpx;'></view>
+          <!--点赞-->
+          <view>
+            <view wx:if="{{!comment.liked}}" data-cid="{{comment.id}}" class='addzan' style='opacity: 0.6;' bindtap='addzan'>
+              <image src="/images/zan1.png" style='width:40rpx;height:40rpx'></image>
+              <view>赞</view>
+              <view style='width:10rpx;'></view>
+              <view>{{comment.likes}}</view>
+            </view>
+            <!--赞列表中有该评论-->
+            <view wx:if="{{comment.liked}}" class='addzan' style=''>
+              <image src="/images/zan2.png" style='width:40rpx;height:40rpx'></image>
+              <view style='color:red'>已赞</view>
+              <view style='width:10rpx;'></view>
+              <view style='color:red'>{{comment.likes}}</view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+      <view style='height:5rpx;'></view>
+    </view>
+    <view wx:if="{{isloading||nomore}}" class="separate" style='margin: 0rpx;opacity: 0.2;'></view>
+  <view style="height:70rpx; display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;color:gray;font-size:30rpx;background-color:rgba(136,136,136,0.1)">
+   <text wx:if="{{isloading&&!nomore}}" >@Loading...</text>
+   <text wx:if="{{nomore&&!isloading}}" >已经到底了 @.@
+    </text>
+  </view>
+
+  </view>
+
+
+  <!--view style='height:10rpx;'></view>
+  <view class="separate" style='margin: 0rpx;opacity: 0.2;'></view-->
+  <view class="separate" style='margin: 0rpx;height:120rpx;opacity: 0.1;'></view>
+
+
+<!-- 底部悬浮栏 -->
+<view class="detail-nav">
+
+  <!--button class="button-green" bindtap="addCar" formType="submit">砍价</button-->
+  <button bindtap='toBuy' class="button-buy" style="width:750rpx;font-size:35rpx;{{bookinfo.left>0?'':'background-color:#dddddd'}}"  >{{bookinfo.left>0?'立即换购':'暂无库存'}}</button>
+</view>
+
+</scroll-view>

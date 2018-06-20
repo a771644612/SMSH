@@ -1,0 +1,15 @@
+@import 'weui.wxss';
+
+/*引入WeUI。*/
+
+.container {
+  font-weight: bold;
+  font-size: 30px;
+  height: 50px;
+  /*弹性盒子布局。*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
